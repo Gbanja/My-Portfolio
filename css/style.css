@@ -1,0 +1,856 @@
+:root {
+  --color-primary: #2e3a59;
+  --color-secondary: #f6f7f9;
+  --color-accent: #ef5b5b;
+  --color-neutral: #7d8597;
+  --color-cta: #ffc857;
+  --transition: 0.3s ease;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.6s;
+}
+
+a {
+  color: var(--color-cta);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--color-accent);
+}
+
+header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: var(--shadow);
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+nav a {
+  color: #fff;
+  position: relative;
+}
+nav a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  transition: width var(--transition);
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+main {
+  flex: 1;
+}
+
+section {
+  padding: 4rem 2rem;
+}
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  width: 50px;
+  height: 4px;
+  background: var(--color-accent);
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-cta);
+  color: var(--color-primary);
+  border-radius: 4px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+.slide {
+  min-width: 100%;
+  padding: 1rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.slider .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+#prev {
+  left: 10px;
+}
+#next {
+  right: 10px;
+}
+
+/* Lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Contact Form */
+form {
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+form .field {
+  margin-bottom: 1rem;
+}
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-neutral);
+}
+form input,
+form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border var(--transition), box-shadow var(--transition);
+}
+form input:focus,
+form textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(239, 91, 91, 0.2);
+}
+form button {
+  width: 100%;
+  border: none;
+  background: var(--color-cta);
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+form button:hover {
+  background: var(--color-accent);
+}
+
+/* Footer */
+footer {
+  background: var(--color-primary);
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background: var(--color-primary);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+  }
+  nav.open ul {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.25rem;
+  }
+}
+
+/* Glow animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 8px var(--color-cta), 0 0 16px rgba(255, 200, 87, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 20px var(--color-cta), 0 0 30px rgba(255, 200, 87, 0.8);
+  }
+}
+
+/* Apply glow to all buttons */
+.button {
+  /* keep existing rules... */
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+/* Apply glow to slider container */
+.slider {
+  /* keep existing rules... */
+  border: 2px solid var(--color-accent);
+  border-radius: 8px;
+  animation: pulseGlow 4s ease-in-out infinite alternate-reverse;
+}
+
+/* Enhance nav buttons on hover */
+.nav-btn {
+  transition: box-shadow var(--transition);
+}
+.nav-btn:hover {
+  box-shadow: 0 0 8px var(--color-accent), 0 0 16px rgba(239, 91, 91, 0.6);
+}
+
+/* 1) Use Rubik in your articles */
+.about-article {
+  font-family: "Rubik", sans-serif;
+  background: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 2) Base hover lift */
+.about-article:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* 3) Unique animations per article */
+.about-article:nth-of-type(1) {
+  animation: glowPulse 4s ease-in-out infinite alternate;
+}
+.about-article:nth-of-type(2) {
+  animation: float 6s ease-in-out infinite;
+}
+.about-article:nth-of-type(3) {
+  animation: rotateSlight 8s ease-in-out infinite alternate;
+}
+.about-article:nth-of-type(4) {
+  animation: bounce 5s ease-in-out infinite;
+}
+
+/* 4) Keyframes */
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 8px var(--color-accent);
+  }
+  to {
+    box-shadow: 0 0 20px var(--color-cta);
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes rotateSlight {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(0);
+  }
+}
+
+/* 5) Accent stripe (just for flair) */
+.about-article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--color-accent);
+}
+
+/* ── NAV BAR GLOW ─────────────────────────────────────────────────── */
+/* base soft glow + pulsing */
+@keyframes navPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(239, 91, 91, 0.3),
+      0 0 20px rgba(255, 200, 87, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(255, 200, 87, 0.5),
+      0 0 30px rgba(239, 91, 91, 0.5);
+  }
+}
+
+header {
+  /* keep your sticky header rules… */
+  animation: navPulse 6s ease-in-out infinite alternate;
+  transition: box-shadow var(--transition);
+}
+
+/* sharper glow on hover */
+header:hover {
+  box-shadow: 0 0 25px var(--color-accent), 0 0 40px var(--color-cta);
+}
+
+/* ── LOGO GLOW ─────────────────────────────────────────────────── */
+@keyframes logoGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 8px var(--color-cta), 0 0 16px var(--color-accent);
+  }
+  50% {
+    text-shadow: 0 0 16px var(--color-accent), 0 0 32px var(--color-cta);
+  }
+}
+
+.logo {
+  animation: logoGlow 4s ease-in-out infinite;
+}
+
+/* ── NAV ITEMS GLOW ─────────────────────────────────────────────────── */
+@keyframes navItemGlow {
+  0%,
+  100% {
+    text-shadow: 0 0 4px var(--color-accent);
+  }
+  50% {
+    text-shadow: 0 0 8px var(--color-cta);
+  }
+}
+
+nav a {
+  position: relative;
+  transition: color var(--transition), text-shadow var(--transition);
+}
+
+/* subtle, synced pulsing on all links */
+nav a {
+  animation: navItemGlow 6s ease-in-out infinite alternate;
+}
+
+/* sharper glow on hover */
+nav a:hover {
+  text-shadow: 0 0 12px var(--color-cta), 0 0 24px var(--color-accent);
+  color: #fff;
+}
+
+/* ── HIDE TOGGLE ON LARGE SCREENS ───────────────────────────────────── */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* ── DROPDOWN ANIMATION & GLOW ────────────────────────────────────── */
+/* 1) Keyframes for the pop-open */
+@keyframes navDropdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* 2) Base nav ul styling (always present, but transformed when closed) */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 2rem;
+  background: var(--color-primary);
+  transform-origin: top right;
+  transform: scaleY(0);
+  transition: transform 0.4s ease-in-out;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  box-shadow: none;
+  border-radius: 0 0 8px 8px;
+  z-index: 9;
+}
+
+/* 3) When “open” class is on the nav, play the animation & add glow */
+nav.open ul {
+  transform: scaleY(1);
+  animation: navDropdown 0.4s ease-out forwards;
+  box-shadow: 0 8px 16px rgba(239, 91, 91, 0.4),
+    0 8px 32px rgba(255, 200, 87, 0.4);
+}
+
+/* 4) Glowing animation while dropped down */
+@keyframes dropdownGlow {
+  0%,
+  100% {
+    box-shadow: 0 8px 16px rgba(239, 91, 91, 0.3),
+      0 8px 32px rgba(255, 200, 87, 0.3);
+  }
+  50% {
+    box-shadow: 0 12px 24px rgba(239, 91, 91, 0.5),
+      0 12px 48px rgba(255, 200, 87, 0.5);
+  }
+}
+nav.open ul {
+  animation: navDropdown 0.4s ease-out forwards,
+    dropdownGlow 6s ease-in-out infinite alternate;
+}
+
+/* 5) Nav items slide-in with a tiny stagger */
+nav.open ul li {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideInLink 0.5s ease-out forwards;
+}
+@keyframes slideInLink {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Slight delay per item */
+nav.open ul li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+nav.open ul li:nth-child(2) {
+  animation-delay: 0.15s;
+}
+nav.open ul li:nth-child(3) {
+  animation-delay: 0.2s;
+}
+nav.open ul li:nth-child(4) {
+  animation-delay: 0.25s;
+}
+nav.open ul li:nth-child(5) {
+  animation-delay: 0.3s;
+}
+
+@media (min-width: 769px) {
+  /* 1) Hide only the hamburger */
+  .menu‐toggle {
+    display: none;
+  }
+
+  /* 2) Restore the UL to auto-width and horizontal layout */
+  nav ul {
+    display: flex !important;
+    flex-direction: row !important;
+    position: static !important;
+    transform: none !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    animation: none !important;
+
+    /* ← NEW: let it size itself to fit all links */
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    /* ← NEW: lay your links out flush to the right (or use flex-start) */
+    justify-content: flex-end;
+    gap: 1.5rem; /* preserve your gap between items */
+  }
+
+  /* 3) Make sure no phantom transforms are still hiding list items */
+  nav ul li {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* ── ENHANCED LOGO MOTION + GLOW ─────────────────────────────────── */
+@keyframes logoMotionGlow {
+  0% {
+    transform: scale(1) rotate(0deg);
+    text-shadow: 0 0 8px var(--color-cta), 0 0 16px var(--color-accent);
+  }
+  25% {
+    transform: scale(1.1) rotate(-3deg);
+    text-shadow: 0 0 12px var(--color-accent), 0 0 24px var(--color-cta);
+  }
+  50% {
+    transform: scale(1) rotate(3deg);
+    text-shadow: 0 0 16px var(--color-cta), 0 0 32px var(--color-accent);
+  }
+  75% {
+    transform: scale(1.05) rotate(-2deg);
+    text-shadow: 0 0 12px var(--color-accent), 0 0 24px var(--color-cta);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    text-shadow: 0 0 8px var(--color-cta), 0 0 16px var(--color-accent);
+  }
+}
+
+.logo {
+  /* ensure the transform origin is centered */
+  transform-origin: center center;
+  /* override the previous glow animation */
+  animation: logoMotionGlow 5s ease-in-out infinite;
+}
+
+/* ── CONTACT FORM CONTAINER GLOW ─────────────────────────────────── */
+@keyframes formGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(239, 91, 91, 0.3),
+      0 0 20px rgba(255, 200, 87, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(239, 91, 91, 0.6),
+      0 0 40px rgba(255, 200, 87, 0.6);
+  }
+}
+
+form#contactForm {
+  animation: formGlow 6s ease-in-out infinite alternate;
+  border-radius: 8px; /* ensure rounded corners */
+}
+
+/* ── INPUTS GLOW & FOCUS ─────────────────────────────────────────── */
+@keyframes inputGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(125, 133, 151, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(239, 91, 91, 0.4),
+      0 0 15px rgba(255, 200, 87, 0.4);
+  }
+}
+
+form#contactForm input,
+form#contactForm textarea {
+  animation: inputGlow 4s ease-in-out infinite alternate;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+form#contactForm input:focus,
+form#contactForm textarea:focus {
+  box-shadow: 0 0 12px var(--color-cta), 0 0 24px var(--color-accent);
+  transform: scale(1.02);
+}
+
+/* ── BUTTON GLOW & HOVER ──────────────────────────────────────────── */
+@keyframes buttonGlow {
+  0% {
+    box-shadow: 0 0 8px var(--color-cta);
+  }
+  100% {
+    box-shadow: 0 0 16px var(--color-accent), 0 0 24px var(--color-cta);
+  }
+}
+
+form#contactForm button {
+  animation: buttonGlow 3s ease-in-out infinite alternate;
+  transition: transform var(--transition);
+}
+
+form#contactForm button:hover {
+  transform: scale(1.05);
+}
+
+/* Hero layout tweaks */
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Profile pic styling */
+.profile-pic-container {
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+  box-shadow: 0 0 8px var(--color-accent), 0 0 16px var(--color-cta);
+  animation: picGlow 5s ease-in-out infinite alternate;
+}
+.profile-pic-container img.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pulsing glow for profile pic */
+@keyframes picGlow {
+  from {
+    box-shadow: 0 0 8px var(--color-accent), 0 0 16px var(--color-cta);
+  }
+  to {
+    box-shadow: 0 0 20px var(--color-cta), 0 0 32px var(--color-accent);
+  }
+}
+
+/* About page: image + text layout */
+.about-with-pic {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+@media (max-width: 768px) {
+  .about-with-pic {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+}
+
+/* smaller version of profile pic here */
+.about-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 6px var(--color-accent), 0 0 12px var(--color-cta);
+  animation: picGlow 5s ease-in-out infinite alternate;
+}
+.about-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Social Icons Container ───────────────────────────────────────── */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ── Icon Glow Animation ──────────────────────────────────────────── */
+@keyframes iconGlow {
+  0% {
+    filter: drop-shadow(0 0 5px var(--color-cta));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px var(--color-accent));
+  }
+}
+
+.social-icons a {
+  display: inline-block;
+  animation: iconGlow 3s ease-in-out infinite alternate;
+  transition: transform var(--transition), filter var(--transition);
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 20px var(--color-cta))
+    drop-shadow(0 0 30px var(--color-accent));
+}
+
+.social-icons img {
+  width: 32px;
+  height: 32px;
+}
+
+/* 5th article: Connect with Me */
+.about-article:nth-of-type(5) {
+  /* unique “pulse-and-spin” */
+  animation: spinPulse 7s ease-in-out infinite alternate;
+}
+
+/* keyframes for the 5th article */
+@keyframes spinPulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 0 8px var(--color-accent);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.03);
+    box-shadow: 0 0 20px var(--color-cta);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    box-shadow: 0 0 12px var(--color-accent);
+  }
+}
+
+/* contact-article specific styling */
+.contact-article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+/* list reset + layout */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  width: 100%;
+}
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+.contact-link img {
+  width: 32px;
+  height: 32px;
+}
+.contact-link:hover {
+  transform: translateX(5px);
+}
+
+/* Facebook text slide-in */
+.facebook span {
+  display: inline-block;
+  animation: fbSlide 4s ease-in-out infinite alternate;
+}
+@keyframes fbSlide {
+  from {
+    transform: translateX(-10px);
+    color: var(--color-neutral);
+  }
+  to {
+    transform: translateX(0);
+    color: var(--color-accent);
+  }
+}
+
+/* Instagram text glow-pulse */
+.instagram span {
+  display: inline-block;
+  animation: instaGlow 3s ease-in-out infinite alternate;
+}
+@keyframes instaGlow {
+  from {
+    text-shadow: 0 0 4px var(--color-accent);
+  }
+  to {
+    text-shadow: 0 0 16px var(--color-cta);
+  }
+}
+
+/* WhatsApp text bounce */
+.whatsapp span {
+  display: inline-block;
+  animation: waBounce 5s ease-in-out infinite;
+}
+@keyframes waBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    color: var(--color-neutral);
+  }
+  50% {
+    transform: translateY(-6px);
+    color: var(--color-cta);
+  }
+}

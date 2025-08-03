@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Blog • GJC</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<style>
+  /* Add any blog-specific styles here */
+  .post-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  .post-list h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .post-list li {
+    margin-bottom: 1.5rem;
+  }
+  .post-list li a {
+    text-decoration: none;
+  }
+  .post-list li p, .post-list li h2 {
+    color: #ffc857;
+  }
+  .post-list li p:hover, .post-list li h2:hover {
+    color: #ef5b5b;
+  }
+</style>
+<body>
+  <header>
+    <div class="logo">GJC</div>
+    <div class="menu-toggle">☰</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="./index.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="post-list">
+      <h1 class="section-title">Blog</h1>
+      <ul>
+        <li>
+          <a href="animating-with-css.html">
+            <h2>Animating with CSS</h2>
+            <p>How to use transitions and keyframes to bring your UI to life.</p>
+          </a>
+        </li>
+        <!-- future posts here -->
+         <li>
+            <h2 class="section-title">Project Spotlight: My First Deployed Page</h2>
+            <p>I built and deployed a pure HTML Resume to GitHub Pages.</p>
+            <a class="button" href="https://gbanja.github.io/My-Online-HTML-Resume/" target="_blank" rel="noopener">
+            ▶ View Live Demo
+            </a>
+         </li>
+
+      </ul>
+    </section>
+  </main>
+   <footer>
+     <div class="social-icons">
+  <a href="https://web.facebook.com/gbanjah.campbell.982" target="_blank" aria-label="Facebook">
+    <img src="../assets/images/facebook-icon.jpg" alt="Facebook">
+  </a>
+  <a href="https://www.instagram.com/gbanjahcampbell" target="_blank" aria-label="Instagram">
+    <img src="../assets/images/instagram-icon.jpg" alt="Instagram">
+  </a>
+  <a href="https://wa.me/231777995675" target="_blank" aria-label="WhatsApp">
+    <img src="../assets/images/whatsapp-icon.jpg" alt="WhatsApp">
+  </a>
+</div>
+
+    <p>&copy; 2025 GbanJah J. Campbell Jr. • Built with ♥</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

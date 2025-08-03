@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Animating with CSS • GJC Blog</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Optional: post-specific styles -->
+  <style>
+    .post-header {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+    .post-header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: .5rem;
+    }
+    .post-header p {
+      color: var(--color-neutral);
+      font-style: italic;
+    }
+    .post-content {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      background: var(--color-secondary);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      line-height: 1.7;
+    }
+    .post-content h2 { margin-top: 2rem; color: var(--color-primary); }
+    .post-content pre {
+      background: #2E3A59; color: #F6F7F9;
+      padding: 1rem; border-radius: 4px; overflow-x: auto;
+    }
+    .post-content a { color: var(--color-cta); }
+    .post-footer {
+      text-align: center; margin: 3rem 0;
+      color: var(--color-neutral);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">GJC</div>
+    <div class="menu-toggle">☰</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="./blog/index.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <article class="post">
+      <header class="post-header">
+        <h1>Animating with CSS</h1>
+        <p>By GbanJah Campbell Jr. • August 3, 2025</p>
+      </header>
+
+      <section class="post-content">
+        <p>Animations breathe life into your web pages—guiding user attention, providing feedback, and adding that extra bit of polish. In this post, we'll explore the core techniques for creating smooth, performant CSS animations and see practical examples you can drop straight into your own projects.</p>
+
+        <h2>1. Why CSS Animation?</h2>
+        <ul>
+          <li><strong>No JavaScript required:</strong> Pure‐CSS animations offload work to the compositor thread, keeping interactions smooth.</li>
+          <li><strong>Declarative control:</strong> Define keyframes and transitions in your stylesheet, making them easy to tweak.</li>
+          <li><strong>Broad support:</strong> Modern browsers fully support <code>@keyframes</code> and <code>transition</code>.</li>
+        </ul>
+
+        <h2>2. Transitions vs. Keyframes</h2>
+        <p><strong>Transitions</strong> let you animate between two states—ideal for hover effects, focus styles, or simple property changes:</p>
+        <pre><code>button {
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+button:hover {
+  background: var(--color-accent);
+  transform: translateY(-3px);
+}</code></pre>
+
+        <p><strong>Keyframes</strong> give you full control over a sequence of states over time—perfect for pulsing glows, slides, rotations, and more:</p>
+        <pre><code>@keyframes pulseGlow {
+  from { box-shadow: 0 0 8px var(--color-cta); }
+  to   { box-shadow: 0 0 20px var(--color-accent); }
+}
+.button {
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}</code></pre>
+
+        <h2>3. Best Practices</h2>
+        <ol>
+          <li><strong>Animate transform & opacity:</strong> These are the cheapest, most performant properties.</li>
+          <li><strong>Avoid layout thrashing:</strong> Don’t animate <code>width</code> or <code>margin</code> if you can use <code>transform: scale()</code>.</li>
+          <li><strong>Keep it subtle:</strong> Overly flashy animations can be distracting—use them to reinforce, not overwhelm.</li>
+        </ol>
+
+        <h2>4. Real-World Examples</h2>
+
+        <h3>Hover Glow Button</h3>
+        <pre><code>.button {
+  position: relative;
+  transition: transform 0.3s;
+}
+.button:hover {
+  transform: translateY(-4px);
+}
+@keyframes glow {
+  0% { box-shadow: 0 0 8px var(--color-cta); }
+  100% { box-shadow: 0 0 16px var(--color-accent); }
+}
+.button {
+  animation: glow 4s ease-in-out infinite alternate;
+}</code></pre>
+
+        <h3>Image Lightbox Fade</h3>
+        <pre><code>.lightbox-overlay {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.lightbox-overlay.show {
+  opacity: 1;
+}</code></pre>
+
+        <h2>5. Performance Tips</h2>
+        <ul>
+          <li>Use the Chrome DevTools “Rendering” tab to highlight painted areas and verify GPU compositing.</li>
+          <li>Limit simultaneous animations on the same element—too many can drop frames.</li>
+          <li>Consider <a href="https://developer.mozilla.org/en-US/docs/Web/Performance/rendering">will-change</a> sparingly to hint at upcoming animations.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>CSS animations are an essential tool for modern web development. From micro-interactions to full-page hero animations, they can elevate your user experience without heavy scripting. Experiment with the examples above, and don’t forget to keep an eye on performance as you add more motion to your sites.</p>
+      </section>
+
+      <footer class="post-footer">
+        <p>Enjoyed this post? <a href="../contact.html">Get in touch</a> or explore more on the <a href="./index.html">blog home</a>.</p>
+      </footer>
+    </article>
+  </main>
+
+  <footer>
+     <div class="social-icons">
+  <a href="https://web.facebook.com/gbanjah.campbell.982" target="_blank" aria-label="Facebook">
+    <img src="./assets/images/facebook-icon.jpg" alt="Facebook">
+  </a>
+  <a href="https://www.instagram.com/gbanjahcampbell" target="_blank" aria-label="Instagram">
+    <img src="./assets/images/instagram-icon.jpg" alt="Instagram">
+  </a>
+  <a href="https://wa.me/231777995675" target="_blank" aria-label="WhatsApp">
+    <img src="./assets/images/whatsapp-icon.jpg" alt="WhatsApp">
+  </a>
+</div>
+
+    <p>&copy; 2025 GbanJah J. Campbell Jr. • Built with ♥</p>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
