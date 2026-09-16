@@ -1,0 +1,43 @@
+:host { font-family: "Segoe UI", sans-serif; color: #edf2ff; line-height: 1.5; font-size: 14px; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+button, textarea, a { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: .55; }
+button:focus-visible, a:focus-visible, textarea:focus-visible { outline: 3px solid #ffc857; outline-offset: 3px; }
+.launcher { position: fixed; z-index: 100; bottom: max(20px, env(safe-area-inset-bottom)); right: 20px; display: flex; align-items: center; gap: 12px; border: 1px solid #8995b7; border-radius: 18px; background: #202c47; color: #fff; box-shadow: 0 12px 40px #111a3540; padding: 15px 19px; font-weight: 600; }
+.launcher span { color: #ffc857; font-size: 24px; line-height: 1; }
+dialog { inset: auto 20px 88px auto; margin: 0; width: min(440px, calc(100vw - 24px)); height: min(700px, calc(100dvh - 110px)); max-height: none; max-width: none; padding: 0; border: 1px solid #73809e; border-radius: 24px; color: #edf2ff; background: linear-gradient(155deg, #25334d, #10182a 65%); box-shadow: 0 30px 100px #0007; }
+dialog[open] { display: flex; flex-direction: column; }
+dialog::backdrop { background: #08102065; backdrop-filter: blur(4px); }
+.heading { display: flex; align-items: center; gap: 12px; padding: 20px; border-bottom: 1px solid #52607a; }
+.avatar { width: 43px; height: 43px; display: grid; place-items: center; border: 1px solid #8494b3; border-radius: 14px; color: #ffda8c; font-size: 22px; }
+.heading h2 { font-size: 19px; margin: 2px 0 0; }
+.eyebrow { font-size: 9px; letter-spacing: 1.2px; color: #bdc9e0; margin: 0; }
+.badge { font-size: 10px; font-weight: 500; color: #cbd6ee; border: 1px solid #64738f; border-radius: 5px; padding: 2px 5px; vertical-align: middle; }
+.close { margin-left: auto; border: 0; color: #edf2ff; background: transparent; font-size: 30px; width: 36px; height: 40px; }
+.transcript { overflow-y: auto; flex: 1; min-height: 0; padding: 24px; overscroll-behavior: contain; }
+.welcome h3 { font-size: 38px; font-weight: 500; line-height: 1.08; letter-spacing: -1.4px; margin: 18px 0; }
+.welcome > p:not(.eyebrow) { color: #c4cee1; font-size: 14px; }
+.suggestions { display: grid; gap: 9px; margin-top: 25px; }
+.suggestions button { background: #38476160; border: 1px solid #64738f; border-radius: 12px; padding: 12px; color: #edf2ff; text-align: left; font-size: 12px; }
+.suggestions button:hover { background: #4b5a7670; }
+.message { background: #25334a; border: 1px solid #52617d; border-radius: 15px; padding: 12px 14px; margin-bottom: 14px; overflow-wrap: anywhere; }
+.message.user { background: #364566; margin-left: 26px; }
+.message strong { color: #fbdc9e; font-size: 11px; font-weight: 500; }
+.message p { font-size: 14px; white-space: pre-wrap; margin: 7px 0 0; }
+.feedback { padding: 0 20px; }
+.error, .notice { margin: 6px 0; font-size: 12px; }
+.error { color: #ffd0d0; }
+.error:empty, .notice:empty { display: none; }
+.retry { color: #fff; background: transparent; border: 0; padding: 4px 0; text-decoration: underline; }
+form { padding: 14px 20px 18px; border-top: 1px solid #52607a; }
+label { display: block; font-size: 11px; color: #c4cee1; margin-bottom: 7px; }
+.composer { display: flex; align-items: flex-end; gap: 8px; padding: 10px; border: 1px solid #71809c; border-radius: 13px; background: #0d1526; }
+textarea { flex: 1; min-width: 0; background: transparent; color: #fff; border: 0; resize: none; font-size: 16px; line-height: 1.45; }
+textarea::placeholder { color: #abbad3; }
+.send, .stop { padding: 9px; border-radius: 9px; border: 0; background: #ffc857; color: #172039; font-weight: 600; font-size: 12px; }
+.tools { display: flex; justify-content: space-between; gap: 10px; margin-top: 12px; }
+.tools a, .clear { color: #d4dff5; font-size: 11px; background: transparent; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 3px; }
+#disclosure { color: #b5c1d8; font-size: 10px; line-height: 1.5; margin: 12px 0 0; }
+@media (max-width: 600px), (max-height: 600px) { dialog { inset: auto 12px max(12px, env(safe-area-inset-bottom)) 12px; width: auto; height: calc(100dvh - 24px); } .heading { padding: 16px; gap: 9px; } .eyebrow { font-size: 8px; } .transcript { padding: 20px; } .launcher { right: 14px; bottom: 14px; font-size: 13px; } }
